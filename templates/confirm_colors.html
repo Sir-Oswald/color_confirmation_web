@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #image-container {
+            position: relative;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #current-image {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+        }
+
+        #navigation {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        #prev-button, #next-button {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            pointer-events: auto;
+            transition: background-color 0.3s;
+            height: 100%;
+            width: 40px;
+        }
+
+        #prev-button:hover, #next-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        #color-selection {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        #progress {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .color-buttons {
+            width: 48%; /* Adjust if needed */
+        }
+
+        .color-buttons h2 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .color-button {
+            display: inline-block;
+            width: calc(50% - 4px);
+            height: 30px;
+            margin: 2px;
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+            text-align: center;
+            padding: 0;
+        }
+
+        .color-button.selected {
+            border: 2px solid #000;
+            font-weight: bold;
+        }
+
+        #delete-results {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+        }
+
+        #delete-results:hover {
+            background-color: #ff1a1a;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            #current-image {
+                max-height: 300px;
+            }
+
+            .color-buttons {
+                width: 45%; /* Slightly narrower on larger screens */
+            }
+
+            .color-button {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Color Confirmation</h1>
+        <div id="image-container">
+            <img id="current-image" src="" alt="Current pattern image">
+            <div id="navigation">
+                <button id="prev-button">&lt;</button>
+                <button id="next-button">&gt;</button>
+            </div>
+        </div>
+        <div id="color-selection">
+            <div id="primary-color-buttons" class="color-buttons">
+                <h2>Primary</h2>
+                <div class="color-swatch">
+                    <div id="primary-swatch" class="swatch"></div>
+                    <span id="primary-color-name" class="color-name"></span>
+                </div>
+                <!-- Primary color buttons will be added here by JavaScript -->
+            </div>
+            <div id="secondary-color-buttons" class="color-buttons">
+                <h2>Secondary</h2>
+                <div class="color-swatch">
+                    <div id="secondary-swatch" class="swatch"></div>
+                    <span id="secondary-color-name" class="color-name"></span>
+                </div>
+                <!-- Secondary color buttons will be added here by JavaScript -->
+            </div>
+        </div>
+        <div id="progress"></div>
+        <button id="download-results">Download Results</button>
+        <button id="delete-results">Delete Results</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

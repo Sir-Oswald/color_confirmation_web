@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="app">
+        <h1>Color Confirmation</h1>
+        <div id="image-container">
+            <img id="current-image" src="" alt="Current pattern image">
+            <div id="navigation">
+                <button id="prev-button">&lt;</button>
+                <button id="next-button">&gt;</button>
+            </div>
+        </div>
+        <div id="color-selection">
+            <div id="primary-color-buttons" class="color-buttons">
+                <div class="color-swatch">
+                    <div id="primary-swatch" class="swatch"></div>
+                    <span id="primary-color-name" class="color-name">No color selected</span>
+                </div>
+                <h2>Primary Color</h2>
+                <!-- Primary color buttons will be added here by JavaScript -->
+            </div>
+            <div id="secondary-color-buttons" class="color-buttons">
+                <div class="color-swatch">
+                    <div id="secondary-swatch" class="swatch"></div>
+                    <span id="secondary-color-name" class="color-name">No color selected</span>
+                </div>
+                <h2>Secondary Color</h2>
+                <!-- Secondary color buttons will be added here by JavaScript -->
+            </div>
+        </div>
+        <div id="progress"></div>
+        <button id="download-results">Download Results</button>
+        <button id="delete-results">Delete Results</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
